@@ -10,9 +10,10 @@ export class TasksController {
 
   @Get('/')
   getAllTasks(@Query() filterDto: GetTasksFilterDto): Task[] {
-    console.log(filterDto);
+    // console.log(filterDto);
 
     if(Object.keys(filterDto).length){
+      // console.log(Object.keys(filterDto).length);
       return this.tasksService.getTaskWithFilters(filterDto);
     }else{
       return this.tasksService.getAllTasks();
@@ -41,10 +42,7 @@ export class TasksController {
 
 
   @Patch('/:id/status')
-  updateTaskStatus(
-    @Param('id') id: string,
-    @Body('status') status: TaskStatus,
-  ): Task {
+  updateTaskStatus(@Param('id') id: string, @Body('status') status: TaskStatus): Task {
     return this.tasksService.updateTaskStatus(id, status);
   }
   
