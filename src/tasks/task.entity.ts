@@ -13,6 +13,6 @@ export class Task extends BaseEntity {
   @Column()
   description: string;
 
-  @Column()
+  @Column({ type: 'enum', enum: TaskStatus })
   status: TaskStatus;
 }
